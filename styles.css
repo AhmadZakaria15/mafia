@@ -1,0 +1,324 @@
+:root {
+  --bg: #14090a;
+  --bg-grad: radial-gradient(ellipse at top, #2a1214, #0d0607);
+  --fg: #f5e6e6;
+  --muted: #a08585;
+  --card: #1f1012;
+  --secondary: #2a1518;
+  --border: rgba(180, 60, 60, 0.25);
+  --primary: #c81f2a;
+  --primary-glow: rgba(200, 31, 42, 0.5);
+  --accent: #8a1721;
+  --gold: #d4a745;
+  --sky: #7cc9e8;
+  --radius: 12px;
+  --shadow: 0 10px 40px -10px rgba(200, 31, 42, 0.6);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Cairo', system-ui, sans-serif;
+  background: var(--bg);
+  background-image: var(--bg-grad);
+  color: var(--fg);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.container { max-width: 1024px; margin: 0 auto; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--primary-glow);
+  letter-spacing: -0.02em;
+}
+
+.subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+/* Buttons */
+.btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--fg);
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: #e02533; box-shadow: var(--shadow); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-outline { background: transparent; border: 1px solid var(--border); }
+.btn-outline:hover { background: var(--secondary); }
+.btn-sm { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+.btn-lg { padding: 1rem 1.5rem; font-size: 1.1rem; font-weight: 700; width: 100%; }
+.btn-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+}
+.btn-gradient:hover { box-shadow: var(--shadow); }
+
+/* Card */
+.card {
+  background: rgba(31, 16, 18, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  border-radius: var(--radius);
+  outline: none;
+}
+.input:focus { border-color: var(--primary); }
+
+.row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Players grid */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.player-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+}
+.player-chip .idx { color: var(--primary); font-weight: 700; margin-left: 0.5rem; }
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.remove-btn:hover { color: var(--primary); }
+
+/* Mafia count */
+.mafia-count { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.count-btn {
+  flex: 1;
+  padding: 0.6rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+}
+.count-btn.active { background: var(--primary); border-color: var(--primary); }
+
+.divider { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; }
+
+.hint { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 0.5rem; }
+
+/* Role cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.role-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.role-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+.eye-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.eye-btn:hover { color: var(--fg); }
+.role-image-wrap { position: relative; height: 220px; }
+.role-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.role-image-wrap .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--card), transparent 60%);
+}
+.role-name {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+.role-name.mafia { color: var(--primary); }
+.role-name.nurse { color: var(--sky); }
+.role-name.sheikh { color: var(--gold); }
+.role-name.citizen { color: var(--muted); }
+.role-placeholder {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: rgba(200, 31, 42, 0.2);
+  background: linear-gradient(135deg, var(--secondary), var(--bg));
+}
+.role-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+.role-picker button {
+  padding: 0.35rem;
+  font-size: 0.7rem;
+  background: var(--secondary);
+  border: none;
+  color: var(--fg);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.role-picker button.active { background: var(--primary); }
+
+.actions-row { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+.actions-row .btn { flex: 1; }
+
+/* Night view */
+.progress-bar { display: flex; gap: 0.25rem; margin-right: auto; }
+.progress-bar .seg {
+  height: 6px;
+  width: 32px;
+  border-radius: 3px;
+  background: var(--secondary);
+}
+.progress-bar .seg.active { background: var(--primary); }
+
+.role-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(to right, rgba(200, 31, 42, 0.2), transparent);
+  border: 1px solid rgba(200, 31, 42, 0.3);
+  margin-bottom: 1.5rem;
+}
+.role-banner img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.role-banner .role-title { font-size: 1.5rem; font-weight: 900; }
+.role-banner .role-desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.target-btn {
+  padding: 0.9rem 1rem;
+  background: var(--secondary);
+  border: 2px solid transparent;
+  color: var(--fg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.target-btn:hover { border-color: rgba(200, 31, 42, 0.5); }
+.target-btn.selected {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* Day view */
+.log-item {
+  background: var(--secondary);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.vote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.dead-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.dead-badge {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.winner-card {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(200, 31, 42, 0.25), transparent);
+  border: 1px solid var(--primary);
+}
+.winner-crown { font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; }
+.winner-title { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; }
+
+@media (max-width: 500px) {
+  .title { font-size: 2rem; }
+  .players-grid { grid-template-columns: 1fr 1fr; }
+}
